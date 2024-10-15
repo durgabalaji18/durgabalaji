@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+
+{% block 'main'%}
+
+
+
+
+<!--product details-->
+<div class="row ms-1 me-1">
+    <div class="col-md-3 mt-4  bg-light p-3">
+      <h5>Filter by category</h5>
+      <hr>
+      <p><a href="/home">ALL</a></p>
+      <p><a href="/catfilter/1">By Mobile</a></p>
+      <p><a href="/catfilter/3">By Clothes</a></p>
+      <p><a href="/catfilter/2">By Shoes</a></p>
+      <hr>
+      <h5>Filter by Price</h5>
+      <form method="GET" action="/range">
+        <div class="mb-3">
+           <label for="input1" class="form-label">Min</label>
+           <input type="number" class="form-control" name="min" id="input1" placeholder="Min value">
+          
+        </div>
+        <div class="mb-3">
+          <label for="input2" class="form-label">Max</label>
+          <input type="number" class="form-control" name="max" id="input2" placeholder="Max value">
+         
+       </div>
+
+       <div class="mb-3">
+        
+        <input type="submit" value="Search" class=" btn btn-danger">
+       
+     </div>
+      </form>
+
+      <h5>Sort by Price</h5>
+      <hr class="mt-2">
+      <p><a href="/sort/1">High to low</a></p>
+      <p><a href="/sort/0">Low to High</a></p>
+
+    </div><!-- end of sidebar-->
+    <div class="col-md-9 mt-4 bg-light p-3">
+        <div class="row">
+            {% for x in products %}
+            <div class="col-md-3 mt-3">
+              <div class="card border-dark shadow" style="width: 100%;">
+                <img src="{% static 'asset/images/tree.jpg' %}" alt="">
+                {% comment %} <img src="tree.jpg" class="card-img-top" alt="tree"> {% endcomment %}
+                <div class="card-body">
+                  <h5 class="card-title">{{x.name}}</h5>
+                  <p class="card-text">₹ {{x.price|floatformat:2}}</p>
+                  {% if x.cat == 1%}
+                  <p class="card-text">Mobile</p>
+                  {% elif x.cat == 2 %}
+                  <p class="card-text">Shoes</p>
+                  {% else %}
+                  <p class="card-text">Clothes</p>
+                {% endif %}  
+                  <a href="/pdetails" class="btn btn-primary">see the details</a>
+                </div>
+              </div>
+            </div>
+           <!-- card ends-->
+            {% endfor %}
+           
+<!-- card ends-->
+        </div>
+    </div>
+</div>
+
+{% endblock 'main'%}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<!--mian starts-->
+<div class="row mt-5 mx-auto">
+     
+    <div class="col-md-6 mt-5">
+        <img src="{% static 'asset/images/tree.jpg' %}" width="100%"  height="" alt="">
+        
+    </div>
+
+
+    <div class="col-md-6 mt-5">
+        <!-- product details 1-->
+        <p><strong>Product Name : Computer</strong></p>
+        <p><strong>Price : Rs 22500</strong></p>
+        <p><strong>Category : Electronics</strong></p>
+        <p><strong>Details : Best Computer</strong></p>
+        <br>
+        <a href="#"><button class="btn btn-danger">Add to cart</button></a>&nbsp;&nbsp;
+        <a href="/viewcart"><button class="btn btn-danger">View cart</button></a>&nbsp;&nbsp;
+        <a href="/home"><button class="btn btn-danger">Shop more</button></a>&nbsp;&nbsp;
+        
+    </div>
+</div>
+
+{% endblock 'main'%}
